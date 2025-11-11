@@ -13,6 +13,8 @@ builder.Services.AddScoped<IPlatoPrincipalService, PlatoPrincipalService>();
 builder.Services.AddScoped<IPostreService, PostreService>();
 builder.Services.AddScoped<IBebidaService, BebidaService>();
 builder.Services.AddScoped<IComboService, ComboService>();
+builder.Services.AddScoped<IMenuDelDiaRepository, MenuDelDiaRepository>();
+builder.Services.AddScoped<IMenuDelDiaService, MenuDelDiaService>();
 
 
 // Add services to the container.

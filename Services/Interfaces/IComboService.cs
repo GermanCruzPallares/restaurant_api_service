@@ -7,7 +7,5 @@ namespace RestauranteAPI.Services
         Task AddAsync(Combo combo);
         Task UpdateAsync(Combo combo);
         Task DeleteAsync(int id);
-        Task InicializarDatosAsync();
-
     }
 }

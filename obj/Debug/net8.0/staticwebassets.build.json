@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "tZYC3cQhvKw9eIbww0pnK5GJpAgUqKk5rgw/MiVA69E=",
-  "Source": "restaurant_api",
-  "BasePath": "_content/restaurant_api",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"VtayyBjNvMB4gML522EZM6YcJ6SUQHeyELauLRhpM7k=","Source":"restaurant_api","BasePath":"_content/restaurant_api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

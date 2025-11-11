@@ -7,19 +7,18 @@ namespace RestauranteAPI.Repositories
     public class ComboRepository : IComboRepository
     {
         private readonly string _connectionString;
-
         private readonly IPlatoPrincipalRepository _platoprincipalrepository;
         private readonly IBebidaRepository _bebidarepository;
         private readonly IPostreRepository _postrerepository;
 
         public ComboRepository(IConfiguration configuration, IPlatoPrincipalRepository platoprincipalrepository, IBebidaRepository bebidarepository, IPostreRepository postrerepository)
         {
-             _connectionString = configuration.GetConnectionString("RestauranteDB") ?? "Not found";
+            _connectionString = configuration.GetConnectionString("RestauranteDB") ?? "Not found";
             _platoprincipalrepository = platoprincipalrepository;
             _bebidarepository = bebidarepository;
             _postrerepository = postrerepository;
         }
-        
+
 
         public async Task<List<Combo>> GetAllAsync()
         {
@@ -43,7 +42,7 @@ namespace RestauranteAPI.Repositories
                                 Bebida = await _bebidarepository.GetByIdAsync(reader.GetInt32(2)),
                                 Postre = await _postrerepository.GetByIdAsync(reader.GetInt32(3)),
                                 Descuento = Convert.ToDouble(reader.GetDecimal(4)),
-                            }; 
+                            };
 
                             combos.Add(combo);
                         }

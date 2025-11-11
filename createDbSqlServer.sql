@@ -5,6 +5,17 @@ FROM sys.databases
 WHERE name = 'RestauranteDB';
 
 USE RestauranteDB;
+CREATE TABLE MenuDelDia (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Fecha DATE NOT NULL UNIQUE,
+    PlatoPrincipalId INT NOT NULL,
+    BebidaId INT NOT NULL,
+    PostreId INT NOT NULL,
+    PrecioTotal DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (PlatoPrincipalId) REFERENCES PlatoPrincipal(Id),
+    FOREIGN KEY (BebidaId) REFERENCES Bebida(Id),
+    FOREIGN KEY (PostreId) REFERENCES Postre(Id)
+);
 
 CREATE TABLE PlatoPrincipal (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -65,5 +76,3 @@ FROM PlatoPrincipal
 ORDER BY Precio ASC;
 
 SELECT DISTINCT Nombre, Precio FROM PlatoPrincipal;
-
-

@@ -4,12 +4,12 @@ namespace RestauranteAPI.Services
 {
     public class ComboService : IComboService
     {
-        private readonly IComboService _comboRepository;
+        private readonly IComboRepository _comboRepository;
 
-        public ComboService(IComboService comboService)
+        public ComboService(IComboRepository comboRepository)
         {
-            _comboRepository = comboService;
-            
+            _comboRepository = comboRepository;
+
         }
 
         public async Task<List<Combo>> GetAllAsync()
@@ -53,10 +53,6 @@ namespace RestauranteAPI.Services
                 throw new ArgumentException("El ID no es válido para eliminación.");
 
             await _comboRepository.DeleteAsync(id);
-        }
-
-        public async Task InicializarDatosAsync() {
-            await _comboRepository.InicializarDatosAsync();
         }
     }
 }
