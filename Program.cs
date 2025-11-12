@@ -16,7 +16,10 @@ builder.Services.AddScoped<IComboService, ComboService>();
 builder.Services.AddScoped<IMenuDelDiaRepository, MenuDelDiaRepository>();
 builder.Services.AddScoped<IMenuDelDiaService, MenuDelDiaService>();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 // Add services to the container.
 
 builder.Services.AddControllers();

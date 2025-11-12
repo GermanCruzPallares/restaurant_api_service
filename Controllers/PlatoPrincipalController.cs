@@ -49,7 +49,10 @@ namespace RestauranteAPI.Controllers
                 return NotFound();
             }
 
+<<<<<<< HEAD
             // Actualizar el plato existente
+=======
+>>>>>>> master
             existingPlato.Nombre = updatedPlato.Nombre;
             existingPlato.Precio = updatedPlato.Precio;
             existingPlato.Ingredientes = updatedPlato.Ingredientes;

@@ -11,4 +11,8 @@ public class MenuDelDia
     public int PostreId { get; set; }
     public Postre? Postre { get; set; }
     public double PrecioTotal { get; set; }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

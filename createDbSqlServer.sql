@@ -5,6 +5,7 @@ FROM sys.databases
 WHERE name = 'RestauranteDB';
 
 USE RestauranteDB;
+<<<<<<< HEAD
 CREATE TABLE MenuDelDia (
     Id INT PRIMARY KEY IDENTITY(1,1),
     Fecha DATE NOT NULL UNIQUE,
@@ -16,6 +17,8 @@ CREATE TABLE MenuDelDia (
     FOREIGN KEY (BebidaId) REFERENCES Bebida(Id),
     FOREIGN KEY (PostreId) REFERENCES Postre(Id)
 );
+=======
+>>>>>>> master
 
 CREATE TABLE PlatoPrincipal (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -45,6 +48,21 @@ CREATE TABLE Combo (
     Postre INT NOT NULL,
     Descuento DECIMAL(10, 2) NOT NULL CHECK (Descuento >= 0)
 );
+<<<<<<< HEAD
+=======
+CREATE TABLE MenuDelDia (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Fecha DATE NOT NULL,
+    PlatoPrincipalId INT NOT NULL,
+    BebidaId INT NOT NULL,
+    PostreId INT NOT NULL,
+    PrecioTotal FLOAT NOT NULL,
+
+    CONSTRAINT FK_MenuDelDia_PlatoPrincipal FOREIGN KEY (PlatoPrincipalId) REFERENCES PlatoPrincipal(Id),
+    CONSTRAINT FK_MenuDelDia_Bebida FOREIGN KEY (BebidaId) REFERENCES Bebida(Id),
+    CONSTRAINT FK_MenuDelDia_Postre FOREIGN KEY (PostreId) REFERENCES Postre(Id)
+);
+>>>>>>> master
 
 INSERT INTO PlatoPrincipal (Nombre, Precio, Ingredientes)
 VALUES 
@@ -75,4 +93,12 @@ SELECT *
 FROM PlatoPrincipal
 ORDER BY Precio ASC;
 
+<<<<<<< HEAD
 SELECT DISTINCT Nombre, Precio FROM PlatoPrincipal;
+=======
+SELECT DISTINCT Nombre, Precio FROM PlatoPrincipal;
+
+
+#Setup local db (Sql server)
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CU21-ubuntu-20.04
+>>>>>>> master
