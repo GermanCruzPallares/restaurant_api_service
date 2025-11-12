@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RestauranteAPI.Models;
 using RestauranteAPI.Repositories;
 using RestauranteAPI.Services;
 
@@ -11,10 +12,16 @@ namespace RestauranteAPI.Controllers
     private static List<Combo> combos = new List<Combo>();
 
     private readonly IComboService _ComboService;
+    private readonly IPlatoPrincipalService _platoPrincipalService;
+    private readonly IBebidaService _bebidaService;
+    private readonly IPostreService _postreService;
 
-    public ComboController(IComboService ComboService)
+    public ComboController(IComboService comboService, IPlatoPrincipalService platoPrincipalService, IBebidaService bebidaService, IPostreService postreService)
         {
-            _ComboService = ComboService;
+            _ComboService = comboService;
+            _platoPrincipalService = platoPrincipalService;
+            _bebidaService = bebidaService;
+            _postreService = postreService;
         }
     
         [HttpGet]
@@ -35,8 +42,35 @@ namespace RestauranteAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Combo>>ComboUpdate(Combo combo)
+        public async Task<ActionResult<Combo>> CreateCombo(ComboCreateDto comboDto)
         {
+            var plato = await _platoPrincipalService.GetByIdAsync(comboDto.PlatoPrincipalId);
+            if (plato == null)
+            {
+                return BadRequest("El PlatoPrincipal con el ID proporcionado no existe.");
+            }
+
+            var bebida = await _bebidaService.GetByIdAsync(comboDto.BebidaId);
+            if (bebida == null)
+            {
+                return BadRequest("La Bebida con el ID proporcionado no existe.");
+            }
+
+            var postre = await _postreService.GetByIdAsync(comboDto.PostreId);
+            if (postre == null)
+            {
+                return BadRequest("El Postre con el ID proporcionado no existe.");
+            }
+
+            var combo = new Combo
+            {
+                Nombre = comboDto.Nombre,
+                PlatoPrincipal = plato,
+                Bebida = bebida,
+                Postre = postre,
+                Descuento = comboDto.Descuento
+            };
+
             await _ComboService.AddAsync(combo);
             return CreatedAtAction(nameof(GetCombo), new { id = combo.Id }, combo);
         }
