@@ -43,8 +43,4 @@ public class MenuDelDiaController : ControllerBase
         var createdMenu = await _menuDelDiaService.CreateAsync(menu);
         return CreatedAtAction(nameof(GetByDate), new { fecha = createdMenu.Fecha.ToString("yyyy-MM-dd") }, createdMenu);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master

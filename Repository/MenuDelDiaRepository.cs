@@ -102,7 +102,3 @@ public class MenuDelDiaRepository : IMenuDelDiaRepository
         }
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> master

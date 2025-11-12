@@ -16,11 +16,6 @@ builder.Services.AddScoped<IComboService, ComboService>();
 builder.Services.AddScoped<IMenuDelDiaRepository, MenuDelDiaRepository>();
 builder.Services.AddScoped<IMenuDelDiaService, MenuDelDiaService>();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-// Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -28,7 +23,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

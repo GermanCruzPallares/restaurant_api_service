@@ -38,17 +38,9 @@ public class MenuDelDiaService : IMenuDelDiaService
         var bebida = await _bebidaRepository.GetByIdAsync(menu.BebidaId) ?? throw new ArgumentException("La bebida no existe.");
         var postre = await _postreRepository.GetByIdAsync(menu.PostreId) ?? throw new ArgumentException("El postre no existe.");
 
-<<<<<<< HEAD
-        // El precio se calcula automáticamente, no se toma del input del usuario.
-=======
->>>>>>> master
         menu.PrecioTotal = plato.Precio + bebida.Precio + postre.Precio;
 
         await _menuDelDiaRepository.AddAsync(menu);
         return menu;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
