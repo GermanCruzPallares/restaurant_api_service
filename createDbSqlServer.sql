@@ -34,6 +34,18 @@ CREATE TABLE Combo (
     Postre INT NOT NULL,
     Descuento DECIMAL(10, 2) NOT NULL CHECK (Descuento >= 0)
 );
+CREATE TABLE MenuDelDia (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Fecha DATE NOT NULL,
+    PlatoPrincipalId INT NOT NULL,
+    BebidaId INT NOT NULL,
+    PostreId INT NOT NULL,
+    PrecioTotal FLOAT NOT NULL,
+
+    CONSTRAINT FK_MenuDelDia_PlatoPrincipal FOREIGN KEY (PlatoPrincipalId) REFERENCES PlatoPrincipal(Id),
+    CONSTRAINT FK_MenuDelDia_Bebida FOREIGN KEY (BebidaId) REFERENCES Bebida(Id),
+    CONSTRAINT FK_MenuDelDia_Postre FOREIGN KEY (PostreId) REFERENCES Postre(Id)
+);
 
 INSERT INTO PlatoPrincipal (Nombre, Precio, Ingredientes)
 VALUES 
